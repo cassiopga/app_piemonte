@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using App_Piemonte.Data;
 
 namespace App_Piemonte
 {
@@ -33,6 +35,9 @@ namespace App_Piemonte
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<App_PiemonteContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("App_PiemonteContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
